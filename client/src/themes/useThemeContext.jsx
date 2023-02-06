@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import { useContext } from "react";
 import { ModeContext } from "./ModeContext";
 
@@ -18,7 +18,13 @@ export const ThemeContext = ({ children }) => {
   });
 
   return (
-    <ThemeProvider theme={mode === "dark" ? darkTheme : lightTheme}>
+    <ThemeProvider
+      theme={
+        mode === "dark"
+          ? responsiveFontSizes(darkTheme)
+          : responsiveFontSizes(lightTheme)
+      }
+    >
       {children}
     </ThemeProvider>
   );

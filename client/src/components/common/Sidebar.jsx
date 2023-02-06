@@ -18,8 +18,6 @@ import axiosBoard from "../../api/axiosBoard";
 // Icons
 import LogoutIcon from "@mui/icons-material/Logout";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-// import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 // Components
 import FavouritesList from "./FavouritesList";
@@ -114,9 +112,9 @@ const Sidebar = () => {
             <Typography variant="body2" fontWeight="700">
               {user.username}
             </Typography>
-            <Tooltip title="Colapse">
-              <IconButton>
-                <ChevronLeftIcon />
+            <Tooltip title="Signout">
+              <IconButton onClick={handleLogout}>
+                <LogoutIcon fontSize="small" />
               </IconButton>
             </Tooltip>
           </Box>
@@ -134,9 +132,11 @@ const Sidebar = () => {
             <Typography variant="body2" fontWeight="700">
               Private
             </Typography>
-            <IconButton onClick={handleAddBoard}>
-              <AddBoxOutlinedIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="New Board">
+              <IconButton onClick={handleAddBoard}>
+                <AddBoxOutlinedIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </Box>
         </ListItem>
         <DragDropContext onDragEnd={handleDragEnd}>
@@ -185,12 +185,7 @@ const Sidebar = () => {
         </DragDropContext>
       </List>
       <ListItem sx={{ alignSelf: "flex-end" }}>
-        <Box width="100%" display="flex" justifyContent="space-between">
-          <Tooltip title="Signout">
-            <IconButton onClick={handleLogout}>
-              <LogoutIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
+        <Box width="100%" display="flex" justifyContent="flex-end">
           <ColorModeToggle />
         </Box>
       </ListItem>

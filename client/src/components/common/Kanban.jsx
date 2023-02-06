@@ -157,12 +157,16 @@ const Kanban = ({ sections, boardId }) => {
         <Box
           display="flex"
           alignItems="flex-start"
-          width="cal(100vw - 400px)"
+          width="calc(100vw - 400px)"
           sx={{ overflowX: "auto" }}
         >
           {data.map((section) => (
             <div key={section.id} style={{ width: "300px" }}>
-              <Droppable key={section.id} droppableId={section.id}>
+              <Droppable
+                key={section.id}
+                droppableId={section.id}
+                type="COLUMN"
+              >
                 {(provided) => (
                   <Box
                     ref={provided.innerRef}
@@ -206,6 +210,7 @@ const Kanban = ({ sections, boardId }) => {
                         <DeleteOutlinedIcon />
                       </IconButton>
                     </Box>
+
                     {/* Tasks */}
                     {section.tasks.map((task, index) => (
                       <Draggable

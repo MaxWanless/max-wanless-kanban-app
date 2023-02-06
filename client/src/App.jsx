@@ -19,7 +19,7 @@ import AuthLayout from "./components/Layouts/AuthLayout";
 import AppLayout from "./components/Layouts/AppLayout";
 
 // Styles
-import "./css/scrollbars.css";
+import "./styles/custom-scrollbars.css";
 
 function App() {
   return (

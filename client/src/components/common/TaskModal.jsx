@@ -13,7 +13,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 // Styles
-import "../../css/custom-editor.css";
+import "../../styles/custom-editor.css";
 
 // Api
 import axiosTasks from "../../api/axiosTasks";
@@ -172,10 +172,10 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "50%",
+  width: { xs: "100%", md: "90%", lg: "50%" },
   bgcolor: "background.paper",
   border: "0px solid #000",
   boxShadow: 24,
   p: 1,
-  height: "80%",
+  height: { xs: "100%", md: "80%", lg: "80%" },
 };

@@ -5,6 +5,7 @@ import { setBoards } from "../redux/features/boardSlice";
 import { setFavouritesList } from "../redux/features/favouriteSlice";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 import TextField from "@mui/material/TextField";
 
 // Api
@@ -162,16 +163,20 @@ const Board = () => {
         justifyContent="space-between"
         width="100%"
       >
-        <IconButton onClick={handleAddFavourite}>
-          {isFavourite ? (
-            <StarIcon color="warning" />
-          ) : (
-            <StarBorderOutlinedIcon />
-          )}
-        </IconButton>
-        <IconButton onClick={handleDeleteBoard}>
-          <DeleteOutlinedIcon color="error" />
-        </IconButton>
+        <Tooltip title="Favourite">
+          <IconButton onClick={handleAddFavourite}>
+            {isFavourite ? (
+              <StarIcon color="warning" />
+            ) : (
+              <StarBorderOutlinedIcon />
+            )}
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Delete">
+          <IconButton onClick={handleDeleteBoard}>
+            <DeleteOutlinedIcon color="error" />
+          </IconButton>
+        </Tooltip>
       </Box>
       <Box padding={"10px 50px"}>
         <Box>
