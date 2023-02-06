@@ -1,7 +1,7 @@
 import _axios from "axios";
 // import queryString from "query-string";
 
-const baseUrl = "https://kanban-server-jbq6.onrender.com/api/v1/";
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const getToken = () => localStorage.getItem("token");
 
