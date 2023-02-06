@@ -1,12 +1,13 @@
 import _axios from "axios";
 // import queryString from "query-string";
 
-const baseUrl = "http://localhost:3001/api/v1/";
+const baseUrl = process.env.REACT_APP_BASE_URL;
+console.log({ baseUrl });
+console.log(process.env.REACT_APP_BASE_URL);
 const getToken = () => localStorage.getItem("token");
 
 const axios = _axios.create({
   baseURL: baseUrl,
-  // paramsSerializer: (params) => queryString.stringify({ params }),
 });
 
 axios.interceptors.request.use(async (config) => {
@@ -14,7 +15,7 @@ axios.interceptors.request.use(async (config) => {
     ...config,
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${getToken()}`,
+      Authorization: `Bearer ${getToken()}`,
     },
   };
 });
