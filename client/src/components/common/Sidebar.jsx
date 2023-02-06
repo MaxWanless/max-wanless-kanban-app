@@ -133,8 +133,11 @@ const Sidebar = () => {
               Private
             </Typography>
             <Tooltip title="New Board">
-              <IconButton onClick={handleAddBoard}>
-                <AddBoxOutlinedIcon fontSize="small" />
+              <IconButton
+                onClick={handleAddBoard}
+                sx={{ color: "gray", "&:hover": { color: "green" } }}
+              >
+                <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
           </Box>

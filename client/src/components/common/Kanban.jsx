@@ -3,6 +3,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
@@ -162,24 +163,17 @@ const Kanban = ({ sections, boardId }) => {
         >
           {data.map((section) => (
             <div key={section.id} style={{ width: "300px" }}>
-              <Droppable
-                key={section.id}
-                droppableId={section.id}
-                type="COLUMN"
-              >
-                {(provided) => (
-                  <Box
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    width="300px"
-                    padding="10px"
-                    marginRight="10px"
-                  >
+              <Droppable key={section.id} droppableId={section.id}>
+                {(provided, snapshot) => (
+                  <>
                     <Box
                       display="flex"
                       alignItems="center"
                       justifyContent="space-between"
-                      marginBottom="10px"
+                      marginRight="1rem"
+                      borderBottom={
+                        snapshot.isDraggingOver ? "2px grey solid" : "none"
+                      }
                     >
                       <TextField
                         value={section.title}
@@ -195,52 +189,64 @@ const Kanban = ({ sections, boardId }) => {
                           "& .MuiOutlinedInput-root": { fontSize: "0.8rem" },
                         }}
                       />
-                      <IconButton
-                        size="small"
-                        onClick={() => handleCreateTask(section.id)}
-                        sx={{ color: "gray", "&:hover": { color: "green" } }}
-                      >
-                        <AddBoxOutlinedIcon />
-                      </IconButton>
-                      <IconButton
-                        size="small"
-                        onClick={() => handleDeleteSection(section.id)}
-                        sx={{ color: "gray", "&:hover": { color: "red" } }}
-                      >
-                        <DeleteOutlinedIcon />
-                      </IconButton>
+                      <Tooltip title="Add Task">
+                        <IconButton
+                          size="small"
+                          onClick={() => handleCreateTask(section.id)}
+                          sx={{ color: "gray", "&:hover": { color: "green" } }}
+                        >
+                          <AddBoxOutlinedIcon />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Delete Section">
+                        <IconButton
+                          size="small"
+                          onClick={() => handleDeleteSection(section.id)}
+                          sx={{ color: "gray", "&:hover": { color: "red" } }}
+                        >
+                          <DeleteOutlinedIcon />
+                        </IconButton>
+                      </Tooltip>
                     </Box>
-
-                    {/* Tasks */}
-                    {section.tasks.map((task, index) => (
-                      <Draggable
-                        key={task.id}
-                        draggableId={task.id}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <Card
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            onClick={() => setSelectedTask(task)}
-                            sx={{
-                              padding: "10px",
-                              margin: "10px",
-                              cursor: snapshot.isDragging
-                                ? "grab"
-                                : "pointer!important",
-                            }}
-                          >
-                            <Typography>
-                              {task.title === "" ? "Untitled" : task.title}
-                            </Typography>
-                          </Card>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </Box>
+                    <Box
+                      component="div"
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      width="300px"
+                      padding="10px"
+                      marginRight="10px"
+                    >
+                      {/* Tasks */}
+                      {section.tasks.map((task, index) => (
+                        <Draggable
+                          key={task.id}
+                          draggableId={task.id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <Card
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              onClick={() => setSelectedTask(task)}
+                              sx={{
+                                padding: "10px",
+                                marginBottom: "10px",
+                                cursor: snapshot.isDragging
+                                  ? "grab"
+                                  : "pointer!important",
+                              }}
+                            >
+                              <Typography>
+                                {task.title === "" ? "Untitled" : task.title}
+                              </Typography>
+                            </Card>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </Box>
+                  </>
                 )}
               </Droppable>
             </div>
