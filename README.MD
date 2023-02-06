@@ -1,6 +1,8 @@
-# 🗻 React KanBan App
+<img src="https://github.com/MaxWanless/max-wanless-kanban-app/blob/main/client/src/assets/images/favicon.png?raw=true" width="48" height="48">
 
-A React Kanban web app that streamlines project management with its intuitive drag-and-drop interface. Easily categorize tasks and track progress with real-time updates and visual representation.
+# React KanBan App
+
+A MERN stack Kanban web application that streamlines project management with its intuitive drag-and-drop interface. Easily categorize tasks and track progress with real-time updates and visual representation.
 
 ## Table of Contents
 
@@ -14,7 +16,7 @@ A React Kanban web app that streamlines project management with its intuitive dr
 
 ## 📲 Live Demo
 
-Just working on hosting, Stay tuned for a live Demo.
+Just working on hosting, Stay tuned for a live [Demo](https://max-wanless-kanban.netlify.app).
 
 ## 💻 Tech Stack
 
@@ -43,15 +45,34 @@ Just working on hosting, Stay tuned for a live Demo.
 
 ## 📸 Screenshots
 
-desktop dashboards
+Login Page
+![Login Page](https://github.com/MaxWanless/max-wanless-kanban-app/blob/main/screenshots/Login_Page.png?raw=true)
+
+Signup Page
+![Signup Page](https://github.com/MaxWanless/max-wanless-kanban-app/blob/main/screenshots/Signup_Page.png?raw=true)
+
+Board Page Dark
+![Board Page Dark](https://github.com/MaxWanless/max-wanless-kanban-app/blob/main/screenshots/Board_Page_Dark.png?raw=true)
+
+Board Page Light
+![Board Page Light](https://github.com/MaxWanless/max-wanless-kanban-app/blob/main/screenshots/Board_Page_Light.png?raw=true)
+
+Task View
+![Task View](https://github.com/MaxWanless/max-wanless-kanban-app/blob/main/screenshots/Task_View.png?raw=true)
+
 <br />
+
+
 
 ## ⚙️ Setup Instructions
 
 - Download or clone the project repository.
+- Create a MongoDB account and follow the steps for setting up a new cluster. [Getting started](https://www.mongodb.com/docs/manual/tutorial/getting-started/) 
+- In the client folder create a `.env` file with the following variables:
+  - `REACT_APP_BASE_URL` The url your API server is running on. (eg. "http://localhost:3001/api/v1/")
 - In the server folder create a `.env` file with the following variables:
-  - `PORT` The port you wish your API server to run on. (eg. "5050")
-  - `MONGO_URL` The url for your API server. (eg. "http://localhost")
+  - `PORT` The port you wish your API server to run on. (eg. "3001")
+  - `MONGO_URL` The url for your API server. (eg. "mongodb+srv://<user>:<passord>@cluster0")
   - `PASSWORD_SECRET` The secret key used to encrypt your password for storage.
   - `TOKEN_SECRET` The secret key used to generate your JSON Web Token.
 - `npm run i` in root folder.
